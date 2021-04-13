@@ -2,11 +2,11 @@
 
 ### Team members
 
-Mikhail Smolnikov
-Jakub Soboňa  
-Richard Stupka 
-Dušan Sýkora  
-Vladimíra Šebová 
+* Mikhail Smolnikov
+* Jakub Soboňa  
+* Richard Stupka 
+* Dušan Sýkora  
+* Vladimíra Šebová 
 
 [GitHub project folder](https://github.com/prostmich/Digital-Electronics-1-Project)
 
