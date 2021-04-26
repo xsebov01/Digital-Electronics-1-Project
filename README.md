@@ -17,7 +17,9 @@ Write your text here.
 
 ## Hardware description
 
-Write your text here.
+**Board:** Arty A7-35T 
+**Sensor:** HC-SR04
+**Display:** 4 digit and 7 segment display
 
 
 ## VHDL modules description and simulations
