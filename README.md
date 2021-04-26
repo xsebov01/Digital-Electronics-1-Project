@@ -17,8 +17,10 @@ Write your text here.
 
 ## Hardware description
 
-**Board:** Arty A7-35T 
+**Board:** Arty A7-35T
+
 **Sensor:** HC-SR04
+
 **Display:** 4 digit and 7 segment display
 
 
