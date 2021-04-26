@@ -23,19 +23,12 @@ The main goal of the project is to create a parking assistant program that will 
 | Callout | Description | Callout | Description | Callout | Description |
 | :-: | :-: | :-: | :-: | :-: | :-: |
 | 1 | FPGA programming DONE LED | 8 | User RGB LEDs | 15 | chipKIT processor reset |
-| 2 | Shared USB JTAG/UART port | 9 | User slide switches | 16 | chipKIT processor reset |
-| 3 | Ethernet connector | 10 | User push buttons | 17 | chipKIT processor reset |
-| 4 | Mac address sticker | 11 | Arduino/chipKIT shield connectors | 18 | chipKIT processor reset |
-| 5 | Power jack for optional external supply | 12 | Arduino/chipKIT shield SPI connectors | 19 | chipKIT processor reset |
-| 6 | Power good LED | 13 | User RGB LEDs | 20 | chipKIT processor reset |
-| 7 | User LEDs | 14 | User RGB LEDs | 21 | chipKIT processor reset |
-
-
-
-
-
-
-
+| 2 | Shared USB JTAG/UART port | 9 | User slide switches | 16 | Pmod connectors |
+| 3 | Ethernet connector | 10 | User push buttons | 17 | FPGA programming reset button |
+| 4 | Mac address sticker | 11 | Arduino/chipKIT shield connectors | 18 | SPI flash memory |
+| 5 | Power jack for optional external supply | 12 | Arduino/chipKIT shield SPI connectors | 19 | Artix FPGA |
+| 6 | Power good LED | 13 | chipKIT processor reset jumper | 20 | Micron DDR3 memory |
+| 7 | User LEDs | 14 | FPGA programming mode | 21 | Dialog Semiconductor DA9062 power supply |
 
 **Sensor:** HC-SR04
 
