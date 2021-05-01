@@ -29,6 +29,10 @@ The main goal of the project is to create a parking assistant program that will 
 | 6 | Power good LED | 13 | chipKIT processor reset jumper | 20 | Micron DDR3 memory |
 | 7 | User LEDs | 14 | FPGA programming mode | 21 | Dialog Semiconductor DA9062 power supply |
 
+**Pins from board**
+
+![Pins](images/pins.png)
+
 **Board connection table**
 
 |  | Pmod JA | Pmod JB | Pmod JC | Pmod JD |
@@ -47,6 +51,8 @@ The main goal of the project is to create a parking assistant program that will 
 
 ![Sensor](images/sensor.jpg)
 
+![Sensor functionality](https://lastminuteengineers.com/wp-content/uploads/arduino/HC-SR04-Ultrasonic-Sensor-Working-Echo-reflected-from-Obstacle.gif)
+
 **Sensor connection table**
 
 | Sensor Pin | Board Pin |
@@ -56,20 +62,93 @@ The main goal of the project is to create a parking assistant program that will 
 | Echo | D13 | 
 | GND | GND | 
 
-**Display:** 4 digit and 7 segment display
+**Electric parameter of sensor**
 
-![Display](images/display.jpg)
-
-**Display connection table**(doplniť)
-
-| Display Pin | Board Pin |
+| Parameter | Value |
 | :-: | :-: | 
-| ? | ? | 
+| Working Voltage | DC 5V | 
+| Working Current | 15mA | 
+| Working Frequency | 40Hz | 
+| Max Range | 4m | 
+| Min Range | 2cm |
+| Measuring Angle | 15 degree |
+| Trigger Input Signal | 10uS TTL pulse |
+| Echo Output Signal | Input TTL lever signal and the range proportion |
+| Dimension | 45*20*15mm |
+
+
+**Display:** 4 digit 7 segment display
+
+![Display](images/display.png)
+
+**Display connection table**
+| Display Pin | Board Pin (General) |
+| :-: | :-: |
+| CLK | B11 | 
+| VCC | VCC | 
+| GND | GND | 
+
+| Display Pin | Board Pin (Anode) |
+| :-: | :-: | 
+| E15 | AN0 | 
+| E16 | AN1 | 
+| D15 | AN2 | 
+| C15 | AN3 | 
+
+| Display Pin | Board Pin (Cathode) |
+| :-: | :-: | 
+| U12 | CA | 
+| V12 | CB | 
+| V10 | CC | 
+| V11 | CD | 
+| U14 | CE | 
+| V14 | CF | 
+| T13 | CG | 
+
 
 ## VHDL modules description and simulations
 
-Write your text here.
+**Distance calculation**
 
+Calculates distances based on received pulses from the HC-SR04 sensor.
+The output is a 9-bit signal, representing the distance of the object from the sensor.
+
+**Pulse counter**
+
+Counts how many pulses were received. This number is used for further distance calculation.
+
+**Trigger generator**
+
+Generates pulses that are used to determine when the distance will be calculated.
+The pulse generation interval is set to 250ms.
+
+**Binary to distance converter**
+
+Converts the binary signal from the "Distance Calculation" module to certain distance units.
+The output value is divided into hundreds, tens, units of centimeters.
+
+**Seven segment display driver**
+
+This module, added by us, is designed to convert the distance to a signal, which is sent to an external display.
+We use only the last three digits, the first is always "0" because we do not need to show a distance value greater than 400 centimeters.
+
+**Binary to bargraph driver**
+
+This module converts the calculated distance value to a certain number of lit LEDs.
+
+Conditions for lighting of individual LED diodes are:
+| Range | Number of LEDs |
+| :-: | :-: | 
+| 0cm — 5cm | 4 |
+| 6cm — 9cm | 3 | 
+| 10cm — 50cm | 2 | 
+| 51cm — 250cm | 1 | 
+| 251cm +  | 0 |
+
+**Pulse-width modulator**
+
+This module generates a rectangular signal of a certain frequency, which we then modulate depending on the distance of the object from the sensor.
+The closer the object, the more frequent the alarm.
 
 ## TOP module description and simulations
 
@@ -83,4 +162,7 @@ Write your text here.
 
 ## References
 
-   1. Write your text here.
+   * [Arty A7 Reference Manual](https://reference.digilentinc.com/reference/programmable-logic/arty-a7/reference-manual)
+   * [Arty A7 Schematic Prints](https://reference.digilentinc.com/_media/reference/programmable-logic/arty-a7/arty_a7_sch.pdf)
+   * [Ultrasonic Ranging Module HC-SR04 Datasheet](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf)
+   * [HC-SR04 Ultrasonic Sensor Tutorial](https://lastminuteengineers.com/arduino-sr04-ultrasonic-sensor-tutorial)
